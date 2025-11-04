@@ -66,6 +66,26 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .price-btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .price-btn:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
         section {
             padding: 80px 0;
         }
@@ -162,17 +182,23 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0, 119, 204, 0.8), rgba(0, 153, 255, 0.8)), var(--light-blue);
+            background: linear-gradient(rgba(0, 119, 204, 0.7), rgba(0, 153, 255, 0.7)), url('hero background.jpg');
             background-size: cover;
             background-position: center;
             color: var(--white);
-            text-align: center;
             padding: 180px 0 100px;
             margin-top: 70px;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            width: 50%;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: var(--white);
             margin-bottom: 20px;
         }
@@ -180,8 +206,8 @@
         .hero p {
             font-size: 1.3rem;
             color: var(--white);
-            max-width: 700px;
-            margin: 0 auto 30px;
+            max-width: 500px;
+            margin-bottom: 30px;
         }
 
         .services {
@@ -211,12 +237,11 @@
 
         .service-img {
             height: 200px;
-            background-color: var(--light-blue);
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-blue);
-            font-size: 3rem;
         }
 
         .service-content {
@@ -228,7 +253,17 @@
 
         .service-content h3 {
             font-size: 1.5rem;
+            margin-bottom: 10px;
+            min-height: 3.6rem;
+            line-height: 1.2;
+        }
+
+        .service-ingredients {
+            font-size: 0.9rem;
+            color: var(--text-gray);
             margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.3;
         }
 
         .benefits-list {
@@ -251,8 +286,12 @@
             font-weight: bold;
         }
 
-        .service-btn {
+        .service-buttons {
+            display: flex;
             margin-top: 20px;
+        }
+
+        .service-btn {
             align-self: flex-start;
         }
 
@@ -317,14 +356,16 @@
         }
 
         .doctor-image {
-            background-color: var(--light-blue);
-            height: 400px;
+            height: 500px;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 5rem;
+            overflow: hidden;
+            background-color: var(--light-blue);
+        }
+
+        .doctor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .doctor-info h2 {
@@ -582,6 +623,15 @@
                 display: block;
             }
             
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                width: 100%;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -632,6 +682,15 @@
                 padding: 12px 20px;
                 font-size: 0.9rem;
             }
+            
+            .service-buttons {
+                flex-direction: column;
+            }
+            
+            .price-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
@@ -660,9 +719,11 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Premium Wellness Drip Therapy</h1>
-            <p>Medical-Grade IV Nutritional Infusions for Vitality, Beauty, and Longevity</p>
-            <a href="#contact" class="btn">BOOK YOUR WELLNESS DRIP THERAPY SESSION</a>
+            <div class="hero-content">
+                <h1>Premium Wellness Drip Therapy</h1>
+                <p>Premium-Grade IV Nutritional Infusions for your Health and Beauty</p>
+                <a href="#contact" class="btn">BOOK YOUR WELLNESS DRIP THERAPY SESSION</a>
+            </div>
         </div>
     </section>
 
@@ -674,11 +735,11 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-spa"></i>
+                    <div class="service-img" style="background-image: url('luminous product.jpg');">
                     </div>
                     <div class="service-content">
-                        <h3>Luminous Glow Drip (Glutathione with Vitamin C)</h3>
+                        <h3>Luminous Glow Drip</h3>
+                        <div class="service-ingredients">Glutathione with Vitamin C</div>
                         <p>Unveil your most radiant self from within. Our premier antioxidant powerhouse combines high-dose Glutathione and Vitamin C to neutralize free radicals, brighten skin, and promote a luminous, even-toned complexion while supporting natural detoxification.</p>
                         <ul class="benefits-list">
                             <li>Skin brightening & lightening</li>
@@ -686,16 +747,19 @@
                             <li>Enhanced immune support</li>
                             <li>Promotes detoxification</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱1,999</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-bolt"></i>
+                    <div class="service-img" style="background-image: url('radiant product.jpg');">
                     </div>
                     <div class="service-content">
-                        <h3>Radiant Revival Drip (Glutathione with Vitamin B Complex)</h3>
+                        <h3>Radiant Revival Drip</h3>
+                        <div class="service-ingredients">Glutathione with Vitamin B Complex</div>
                         <p>Look refreshed and feel re-energized. This blend combats fatigue at its core, supercharging cellular energy production while purifying and illuminating your skin for sustained vitality.</p>
                         <ul class="benefits-list">
                             <li>Fights fatigue & boosts energy</li>
@@ -703,13 +767,15 @@
                             <li>Supports liver detoxification</li>
                             <li>Enhances mental clarity</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱1,999</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-brain"></i>
+                    <div class="service-img" style="background-image: url('nadchrono.jpg');">
                     </div>
                     <div class="service-content">
                         <h3>NAD CHRONO Renewal Drip</h3>
@@ -720,13 +786,15 @@
                             <li>Increased energy and stamina</li>
                             <li>Supports metabolic health</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱3,999</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-filter"></i>
+                    <div class="service-img" style="background-image: url('chelation.jpg');">
                     </div>
                     <div class="service-content">
                         <h3>Chelation Therapy - Heavy Metal Detox Drip</h3>
@@ -737,16 +805,19 @@
                             <li>Improves blood flow</li>
                             <li>Reduces oxidative stress</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱3,999</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-shield-alt"></i>
+                    <div class="service-img" style="background-image: url('executive.jpg');">
                     </div>
                     <div class="service-content">
-                        <h3>The Executive Shield Drip - High-Dose Vitamin C + Zinc + B Vitamins</h3>
+                        <h3>The Executive Shield Drip</h3>
+                        <div class="service-ingredients">High-Dose Vitamin C + Zinc + B Vitamins</div>
                         <p>Defense against high-stress demands. Provides robust immune support, reduces stress effects, and sharpens focus for resilient performance.</p>
                         <ul class="benefits-list">
                             <li>Strengthens immune defense</li>
@@ -754,16 +825,19 @@
                             <li>Enhances mental clarity</li>
                             <li>Combats oxidative stress</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱2,499</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-running"></i>
+                    <div class="service-img" style="background-image: url('athlete.jpg');">
                     </div>
                     <div class="service-content">
-                        <h3>Athlete's Edge Drip - Glutathione + Amino Acids + Magnesium</h3>
+                        <h3>Athlete's Edge Drip</h3>
+                        <div class="service-ingredients">Glutathione + Amino Acids + Magnesium</div>
                         <p>Accelerate recovery and maximize performance. Reduces muscle soreness, repairs tissue damage, and combats exercise-induced oxidative stress.</p>
                         <ul class="benefits-list">
                             <li>Faster muscle recovery</li>
@@ -771,16 +845,19 @@
                             <li>Protection against muscle damage</li>
                             <li>Improved hydration</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱2,499</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-bed"></i>
+                    <div class="service-img" style="background-image: url('beautysleep.jpg');">
                     </div>
                     <div class="service-content">
-                        <h3>Beauty Sleep Drip (Amino Acids + Magnesium + B Vitamins)</h3>
+                        <h3>Beauty Sleep Drip</h3>
+                        <div class="service-ingredients">Amino Acids + Magnesium + B Vitamins</div>
                         <p>Enhance your body's natural overnight renewal. Promotes deep relaxation, improves blood flow, and supports release of growth hormone for repair and rejuvenation.</p>
                         <ul class="benefits-list">
                             <li>Promotes restorative sleep</li>
@@ -788,16 +865,19 @@
                             <li>Enhances circulation</li>
                             <li>Aids muscle recovery</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱2,499</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-weight"></i>
+                    <div class="service-img" style="background-image: url('slimming.jpg');">
                     </div>
                     <div class="service-content">
-                        <h3>Slimming Drip (MIC + B Vitamins + L-Carnitine)</h3>
+                        <h3>Slimming Drip</h3>
+                        <div class="service-ingredients">MIC + B Vitamins + L-Carnitine</div>
                         <p>Kickstart your weight management journey. This powerful lipotropic blend mobilizes and burns fat, supports liver function, and boosts metabolism.</p>
                         <ul class="benefits-list">
                             <li>Promotes fat breakdown</li>
@@ -805,7 +885,29 @@
                             <li>Boosts metabolic rate</li>
                             <li>Enhances energy levels</li>
                         </ul>
-                        <a href="#contact" class="btn service-btn">Book This Service</a>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱2,499</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('tirzepatide.jpg');">
+                    </div>
+                    <div class="service-content">
+                        <h3>Tirzepatide Injection</h3>
+                        <p>Fast-track your weight loss journey with this revolutionary treatment. Tirzepatide is a dual glucose-dependent insulinotropic polypeptide and glucagon-like peptide-1 receptor agonist that not only promotes significant weight loss but also offers substantial benefits for individuals with Type 2 Diabetes.</p>
+                        <ul class="benefits-list">
+                            <li>Accelerated weight loss</li>
+                            <li>Improved blood sugar control</li>
+                            <li>Reduced appetite and cravings</li>
+                            <li>Enhanced metabolic health</li>
+                        </ul>
+                        <div class="service-buttons">
+                            <a href="#contact" class="btn service-btn">Book This Service</a>
+                            <a href="#" class="price-btn">₱2,999</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -820,7 +922,7 @@
             </div>
             <div class="doctor-container">
                 <div class="doctor-image">
-                    <i class="fas fa-user-md"></i>
+                    <img src="drbautista.jpg" alt="Dr. Rhenz Bautista">
                 </div>
                 <div class="doctor-info">
                     <h2>Dr. Rhenz Bautista</h2>
@@ -915,14 +1017,13 @@
                         <p><i class="fas fa-phone"></i> 09685485465</p>
                         <p><i class="fas fa-envelope"></i> info@sirgeorgewellness.com</p>
                         <p><i class="fas fa-map-marker-alt"></i> Multiple locations across the city</p>
-                        <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 1:00 PM - 9:00 PM</p>
                     </div>
                     <h3>Why Choose Sir George Wellness?</h3>
                     <ul class="benefits-list">
-                        <li>Medical-grade formulations</li>
-                        <li>Supervised by Dr. Rhenz Bautista</li>
+                        <li>Medical-grade formulations - Real Products</li>
+                        <li>Guaranteed by Dr. Rhenz Bautista</li>
                         <li>Personalized treatment plans</li>
-                        <li>State-of-the-art facilities</li>
                         <li>Comprehensive wellness approach</li>
                     </ul>
                 </div>
@@ -952,6 +1053,7 @@
                                 <option value="Athlete's Edge Drip">Athlete's Edge Drip</option>
                                 <option value="Beauty Sleep Drip">Beauty Sleep Drip</option>
                                 <option value="Slimming Drip">Slimming Drip</option>
+                                <option value="Tirzepatide">Tirzepatide</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -995,7 +1097,7 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <h3>Sir George Wellness</h3>
-                    <p>Premium IV nutritional therapy for vitality, beauty, and longevity. Medical-grade treatments supervised by Dr. Rhenz Bautista.</p>
+                    <p>Premium IV nutritional therapy for vitality, beauty, and longevity. Experience the difference with medical-grade wellness drips.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
@@ -1012,8 +1114,9 @@
                     <ul>
                         <li><a href="#">Luminous Glow Drip</a></li>
                         <li><a href="#">Radiant Revival Drip</a></li>
-                        <li><a href="#">NAD CHRONO Renewal</a></li>
+                        <li><a href="#">NAD CHRONO Renewal Drip</a></li>
                         <li><a href="#">Chelation Therapy</a></li>
+                        <li><a href="#">Executive Shield Drip</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1021,76 +1124,81 @@
                     <ul>
                         <li><i class="fas fa-phone"></i> 09685485465</li>
                         <li><i class="fas fa-envelope"></i> info@sirgeorgewellness.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Multiple Locations</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 1:00 PM - 9:00 PM</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Sir George Wellness Drip Therapy. All rights reserved.</p>
+                <p>&copy; 2023 Sir George Wellness. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
         });
-
+        
+        // Chat Widget Functionality
         const chatBtn = document.querySelector('.chat-btn');
         const chatBox = document.querySelector('.chat-box');
         const closeChat = document.querySelector('.close-chat');
         const sendBtn = document.querySelector('.send-btn');
         const chatInput = document.querySelector('.chat-input input');
         const chatBody = document.querySelector('.chat-body');
-
-        chatBtn.addEventListener('click', function() {
-            chatBox.style.display = 'block';
+        
+        chatBtn.addEventListener('click', () => {
+            chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
         });
-
-        closeChat.addEventListener('click', function() {
+        
+        closeChat.addEventListener('click', () => {
             chatBox.style.display = 'none';
         });
-
-        function addMessage(message, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message');
-            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-            messageDiv.textContent = message;
-            chatBody.appendChild(messageDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        sendBtn.addEventListener('click', function() {
+        
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        function sendMessage() {
             const message = chatInput.value.trim();
             if (message) {
-                addMessage(message, true);
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('chat-message', 'user-message');
+                userMessage.textContent = message;
+                chatBody.appendChild(userMessage);
+                
                 chatInput.value = '';
                 
+                // Simulate bot response after a delay
                 setTimeout(() => {
-                    const responses = [
-                        "Thank you for your message. Our wellness specialist will get back to you shortly.",
-                        "I'd be happy to help you with that. Could you provide more details?",
-                        "That's a great question! Our team can provide personalized recommendations based on your needs.",
-                        "Would you like to schedule a consultation to discuss which drip therapy would be best for you?"
-                    ];
-                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                    addMessage(randomResponse);
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('chat-message', 'bot-message');
+                    botMessage.textContent = "Thank you for your message. Our wellness specialist will get back to you shortly.";
+                    chatBody.appendChild(botMessage);
+                    chatBody.scrollTop = chatBody.scrollHeight;
                 }, 1000);
+                
+                chatBody.scrollTop = chatBody.scrollHeight;
             }
-        });
-
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendBtn.click();
-            }
-        });
-
-        document.getElementById('booking-form').addEventListener('submit', function(e) {
+        }
+        
+        // Form Submission
+        const bookingForm = document.getElementById('booking-form');
+        
+        bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Thank you for your booking request! We will contact you shortly to confirm your appointment.');
-            this.reset();
+            bookingForm.reset();
         });
 
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1105,6 +1213,7 @@
                         behavior: 'smooth'
                     });
                     
+                    // Close mobile menu if open
                     document.querySelector('nav').classList.remove('active');
                 }
             });
